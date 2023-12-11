@@ -1,0 +1,31 @@
+{% block content %}
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Email</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in data1 %}
+        <tr>
+            <td>{{i.name}}</td>
+            <td>{{i.age}}</td>
+            <td>{{i.email}}</td>
+            <td>
+                <form action= "{% url 'delt1' i.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn">delete</button>
+                </form>
+            </td>
+      <td><button  class=btn btn-warning>Update</button></td>
+
+        </tr>
+
+    {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}
+
